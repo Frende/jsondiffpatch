@@ -13,6 +13,7 @@ var diffFilter = function trivialMatchesDiffFilter(context) {
   }
   if (typeof context.left === 'undefined') {
     if (typeof context.right === 'function') {
+      return; // FRENDE HACK
       throw new Error('functions are not supported');
     }
     context.setResult([context.right]).exit();
@@ -23,6 +24,7 @@ var diffFilter = function trivialMatchesDiffFilter(context) {
     return;
   }
   if (typeof context.left === 'function' || typeof context.right === 'function') {
+    return; // FRENDE HACK
     throw new Error('functions are not supported');
   }
   context.leftType = context.left === null ? 'null' : typeof context.left;
